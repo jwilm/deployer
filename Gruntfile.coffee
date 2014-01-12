@@ -24,16 +24,16 @@ module.exports = (grunt) ->
       js:
         src: [
           'vendor/**/*.js'
-          'app/assets/script/helpers.js',
-          'app/assets/script/templates.js'
+          'temp/js/**/*.js',
+          'app/assets/script/helpers.js'
         ]
         dest: 'public/app.js'
       css:
         src: [
           'vendor/normalize-css/normalize.css',
-          'app/assets/style/style.css'
+          'temp/css/style.css'
         ]
-        dest: 'public/style.css'
+        dest: 'public/app.css'
 
     # Sass Compiler
     sass:
@@ -41,7 +41,7 @@ module.exports = (grunt) ->
         options:
           loadPath: 'vendor/'
         files:
-          'app/assets/style/style.css': 'app/assets/style/style.scss'
+          'temp/css/style.css': 'app/assets/style/style.scss'
 
     # Handlebars compiler
     handlebars:
@@ -51,7 +51,7 @@ module.exports = (grunt) ->
           processName: (filePath) ->
             /app\/views\/([\/a-z_-]+).hbs/i.exec(filePath)[1]
         files:
-          'app/assets/script/templates.js': "app/views/**/*.hbs"
+          'temp/js/templates.js': "app/views/**/*.hbs"
 
     bower:
       install:
@@ -74,12 +74,12 @@ module.exports = (grunt) ->
   grunt.registerMultiTask 'install', 'Install something', ->
     done = @async()
     s = spawn(@data.command, @data.args)
-    s.on 'data', (data) ->
+    s.stdout.on 'data', (data) ->
       grunt.log.writeln data
-    s.on 'error', (err) ->
+    s.stderr.on 'data', (err) ->
       grunt.log.error err
-    s.on 'close', ->
-      done()
+    s.on 'close', (code) ->
+      done(code is 0)
 
   # Compile CSS, JavaScript, Concatenate
   grunt.registerTask 'build', ['sass', 'handlebars', 'concat']

@@ -19,5 +19,4 @@ node_modules
 bower_components/
 vendor/
 public/
-app/assets/style/bourbon/
-app/assets/style/style.css
+temp/
