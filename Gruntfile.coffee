@@ -16,6 +16,14 @@ module.exports = (grunt) ->
         options:
           spawn: false
 
+      coffee:
+        files: ['app/assets/script/**/*.coffee']
+        tasks: ['coffeelint:client', 'coffee', 'concat:js']
+
+      grunt:
+        files: ['Gruntfile.coffee']
+        tasks: ['coffeelint:grunt']
+
     # JS Concatenation
     concat:
       options:
@@ -43,6 +51,16 @@ module.exports = (grunt) ->
         files:
           'temp/css/style.css': 'app/assets/style/style.scss'
 
+    # Coffee Compilation
+    coffee:
+      compile:
+        files:
+          'temp/js/app.js': ['app/assets/script/**/*.coffee']
+
+    coffeelint:
+      client: ['app/assets/script/**/*.coffee']
+      grunt: ['Gruntfile.coffee']
+
     # Handlebars compiler
     handlebars:
       compile:
@@ -69,6 +87,8 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-handlebars'
   grunt.loadNpmTasks 'grunt-contrib-concat'
+  grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-coffeelint'
   grunt.loadNpmTasks 'grunt-bower-task'
 
   grunt.registerMultiTask 'install', 'Install something', ->
@@ -82,7 +102,7 @@ module.exports = (grunt) ->
       done(code is 0)
 
   # Compile CSS, JavaScript, Concatenate
-  grunt.registerTask 'build', ['sass', 'handlebars', 'concat']
+  grunt.registerTask 'build', ['sass', 'handlebars', 'coffee', 'concat']
 
   # Install dependencies and compile
   grunt.registerTask 'bootstrap', ['bower', 'install:bourbon', 'build']
