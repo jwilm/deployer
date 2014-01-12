@@ -1,0 +1,29 @@
+@import 'variables';
+
+.badge {
+    padding: 3px;
+    background-color: $gray;
+    border-radius: 1px;
+    box-shadow: -1px -1px 0 $shadow-gray;
+
+    &.badge-success {
+        color: white;
+        background-color: $green;
+        box-shadow: -1px -1px 0 $shadow-green;
+        text-shadow: 0 -1px $shadow-green;
+    }
+
+    &.badge-danger {
+        color: white;
+        background-color: $red;
+        box-shadow: -1px -1px 0 $shadow-red;
+        text-shadow: 0 -1px $shadow-red;
+    }
+
+    &.badge-warning {
+        color: white;
+        background-color: $orange;
+        box-shadow: -1px -1px 0 $shadow-orange;
+        text-shadow: 0 -1px $shadow-orange;
+    }
+}

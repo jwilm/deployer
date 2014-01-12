@@ -1,0 +1,13 @@
+@import 'variables';
+
+.deployment-log {
+    padding: 1em;
+    background-color: $dark-gray;
+
+    .line {
+        color: white;
+        margin: 0;
+        margin-bottom: 0.25em;
+        text-shadow: 0 -1px $shadow-gray;
+    }
+}

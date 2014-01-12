@@ -13,3 +13,10 @@ results
 
 npm-debug.log
 node_modules
+
+.sass-cache
+*.sublime-workspace
+bower_components/
+vendor/
+public/
+app/assets/style/bourbon/

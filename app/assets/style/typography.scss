@@ -1,0 +1,30 @@
+@import 'variables';
+
+/* Definition List */
+dl {
+    dt {
+        font-weight: bold;
+        width: 100px;
+        text-align: right;
+    }
+
+    dt, dd {
+        display: inline-block;
+        margin-bottom: 0.25em;
+    }
+
+    dd {
+        margin-left: 1em;
+    }
+}
+
+/* Anchors */
+a {
+    color: $orange;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+

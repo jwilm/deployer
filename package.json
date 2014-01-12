@@ -1,0 +1,33 @@
+{
+  "name": "deployer",
+  "version": "0.0.1",
+  "description": "Deploy all the things",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jwilm/deployer.git"
+  },
+  "keywords": [
+    "continuous",
+    "deploy",
+    "cd",
+    "ci"
+  ],
+  "author": "Joe Wilm <jdwilm@gmail.com> (http://jwilm.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jwilm/deployer/issues"
+  },
+  "homepage": "https://github.com/jwilm/deployer",
+  "devDependencies": {
+    "grunt": "0.4.x",
+    "grunt-contrib-watch": "0.5.x",
+    "grunt-contrib-sass": "0.6.x",
+    "grunt-contrib-handlebars": "0.6.x",
+    "grunt-contrib-concat": "0.3.x",
+    "grunt-bower-task": "0.3.x"
+  }
+}

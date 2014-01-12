@@ -1,0 +1,63 @@
+@import 'variables';
+
+html {
+    height: 100%;
+    font-family: "monaco", monospace;
+    color: $shadow-gray;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: $dark-gray;
+    height: 64px;
+
+    .banner {
+        float: left;
+        color: white;
+        text-shadow: 0 -1px $shadow-gray;
+        font-size: 32px;
+        line-height: 40px;
+        padding: 12px;
+        display: inline-block;
+    }
+
+    nav {
+        height: 100%;
+        padding: 0 2em;
+        li, ul {
+            display: inline-block;
+        }
+
+        ul {
+            list-style: none;
+            float: left;
+        }
+
+        li {
+            font-size: 24px;
+            line-height: 32px; 
+            margin-right: 24px;
+            a {
+                color: #9B9B9B;
+                text-shadow: 0 -1px $shadow-gray;
+
+                &.active, &:hover {
+                    color: $orange;
+                    text-shadow: 0 -1px $shadow-orange;
+                    text-decoration: none;
+                }
+
+
+            }
+        }
+
+    }
+}
+
+main {
+    margin-left: 25%;
+    margin-top: 64px;
+    padding: 1px 2em;
+}
