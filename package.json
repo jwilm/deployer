@@ -22,6 +22,10 @@
     "url": "https://github.com/jwilm/deployer/issues"
   },
   "homepage": "https://github.com/jwilm/deployer",
+  "dependencies": {
+    "express": "3.4.x",
+    "bluebird": "0.11.x"
+  },
   "devDependencies": {
     "grunt": "0.4.x",
     "grunt-contrib-watch": "0.5.x",
@@ -29,7 +33,8 @@
     "grunt-contrib-handlebars": "0.6.x",
     "grunt-contrib-concat": "0.3.x",
     "grunt-contrib-coffee": "0.8.x",
-    "grunt-coffeelint": "1.0.x",
-    "grunt-bower-task": "0.3.x"
+    "grunt-coffeelint": "0.0.8",
+    "grunt-bower-task": "0.3.x",
+    "mocha": "1.17.x"
   }
 }
