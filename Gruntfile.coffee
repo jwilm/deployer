@@ -35,8 +35,11 @@ module.exports = (grunt) ->
           '<%= grunt.template.today("yyyy-mm-dd") %> */\n\n'
       js:
         src: [
-          'vendor/**/*.js'
-          'temp/js/**/*.js',
+          'vendor/handlebars/handlebars.js'
+          'vendor/jquery/jquery.js'
+          'vendor/momentjs/moment.js'
+          'vendor/socket.io-client/dist/socket.io.js'
+          'temp/js/**/*.js'
           'app/assets/script/helpers.js'
         ]
         dest: 'public/app.js'
@@ -92,6 +95,8 @@ module.exports = (grunt) ->
           files: 'test/server_spec.coffee'
           reporter: 'spec'
           compilers: ['coffee:coffee-script']
+          env:
+            NODE_ENV: 'test'
 
   }
 

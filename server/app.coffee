@@ -2,6 +2,11 @@ express = require 'express'
 path = require 'path'
 fs = require 'fs'
 Bluebird = require 'bluebird'
+socketio = require 'socket.io'
+http = require 'http'
+levelup = require 'levelup'
+
+db = levelup('./deployer.db')
 
 join = path.join
 normalize = path.normalize
@@ -19,6 +24,8 @@ index = normalize(join(__dirname, '..', 'app', 'index.html'))
 exports.create = ->
   cache = null
   app = express()
+  app.server = http.createServer(app)
+  io = socketio.listen(app.server)
 
   app.configure 'development', ->
     app.use express.logger()
@@ -47,4 +54,11 @@ exports.create = ->
     return res.send(200) if req.body.payload
     next new Error "Not implemented"
 
-  return app
+  io.on 'connection', (socket) ->
+    db.createReadStream()
+    .on 'data', (data) ->
+      socket.send data
+    .on 'error', (err) ->
+      console.error err
+
+  app

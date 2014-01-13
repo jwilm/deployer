@@ -5,6 +5,7 @@
     "jquery": "2.0.x",
     "momentjs": "2.5.x",
     "normalize-css": "2.1.x",
-    "handlebars": "*"
+    "handlebars": "*",
+    "socket.io-client": "0.9.x"
   }
 }

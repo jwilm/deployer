@@ -2,95 +2,7 @@
 <html>
 <head>
   <title>Deployer</title>
-  <script type="application/json" id="fixtures">
-  [
-    {
-      "sha": "6e55107e7d17387cb530350925b6eac76a8eb4cb",
-      "author": "Joe Wilm <jwilm@example.com>",
-      "message": "Merge branch 'add-thingy'",
-      "github": "github.com",
-      "owner": "jwilm",
-      "repo": "doesNotExist",
-      "success": "true",
-      "time": 1389406793,
-      "messages": [
-        "Received post commit hook from GitHub",
-        "Fetching updates...",
-        "Merging into master...",
-        "Stopping server...",
-        "Running forever",
-        "OK"
-      ]
-    }, {
-      "sha": "bd7f031dbdb2082726e05a368513655179b7887d",
-      "author": "Joe Wilm <jwilm@example.com>",
-      "message": "Merge branch 'fix-thingy'",
-      "github": "github.com",
-      "owner": "jwilm",
-      "repo": "doesNotExist",
-      "success": "true",
-      "time": 1389306793,
-      "messages": [
-        "Received post commit hook from GitHub",
-        "Fetching updates...",
-        "Merging into master...",
-        "Stopping server...",
-        "Running forever",
-        "Something went wrong!"
-      ]
-    }, {
-      "sha": "a12b2f7916c51df0d359b43695cac07b55880f0c",
-      "author": "Joe Wilm <jwilm@example.com>",
-      "message": "Merge branch 'awesome-sauce'",
-      "github": "github.com",
-      "owner": "jwilm",
-      "repo": "doesNotExist",
-      "success": "false",
-      "time": 1389206793,
-      "messages": [
-        "Received post commit hook from GitHub",
-        "Fetching updates...",
-        "Merging into master...",
-        "Stopping server...",
-        "Running forever",
-        "OK"
-      ]
-    }, {
-      "sha": "a12b2f7916c51df0d359b43695cac07b55880f0c",
-      "author": "Joe Wilm <jwilm@example.com>",
-      "message": "Merge branch 'awesome-sauce'",
-      "github": "github.com",
-      "owner": "jwilm",
-      "repo": "doesNotExist",
-      "success": "warning",
-      "time": 1389206793,
-      "messages": [
-        "Received post commit hook from GitHub",
-        "Fetching updates...",
-        "Merging into master...",
-        "Stopping server...",
-        "Running forever",
-        "OK"
-      ]
-    }
-  ]
-  </script>
-  
   <script type="text/javascript" src="/assets/app.js"></script>
-
-  <script type="text/javascript">
-    $(document).ready(function() {
-      var builds = JSON.parse(document.getElementById('fixtures').textContent);
-      // for(var j=0; j!=10; j++) {
-        for(var i=0; i!= builds.length; i++) {
-          var el = template.deploySummary(builds[i]);
-          $('.deployment-list').append(el);
-        } 
-      // }
-
-      $('main').html(template.deployment(builds[0]));
-    });
-  </script>
   <link rel="stylesheet" type="text/css" href="/assets/app.css">
 </head>
 <body>
@@ -119,7 +31,7 @@
 
   <!-- main -->
   <main>
-    <h1>Merge branch 'add-thingy'</h1>
+    <h1>There doesn't seem to be anything here</h1>
   </main>
 </body>
 </html>
