@@ -5,6 +5,7 @@ Bluebird = require 'bluebird'
 socketio = require 'socket.io'
 http = require 'http'
 levelup = require 'levelup'
+Deployment = require './Deployment'
 
 db = levelup('./deployer.db')
 
@@ -36,6 +37,7 @@ exports.create = ->
     app.use '/assets', express.static normalize join(__dirname, '..', 'public/')
     app.use app.router
     app.use express.errorHandler()
+    io.disable 'log'
 
   app.get '/', (req, res, next) ->
     if app.env is 'production'
@@ -51,13 +53,21 @@ exports.create = ->
     res.send('Stats not implemented')
 
   app.post '/deploy', (req, res, next) ->
-    return res.send(200) if req.body.payload
-    next new Error "Not implemented"
+    push = JSON.parse(req.body.payload)
+    if push
+      deploy = new Deployment push, io, db
+      deploy.run()
+      return res.send(200)
+    else
+      console.error 'push error'
+      console.error req.body
+      next new Error "Invalid Request"
 
   io.on 'connection', (socket) ->
-    db.createReadStream()
+    db.createReadStream({ valueEncoding: 'json' })
     .on 'data', (data) ->
-      socket.send data
+      data.type = 'init'
+      socket.send JSON.stringify data
     .on 'error', (err) ->
       console.error err
 

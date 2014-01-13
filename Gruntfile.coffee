@@ -24,6 +24,14 @@ module.exports = (grunt) ->
         files: ['server/**/*.coffee', 'index.coffee', 'test/**/*.coffee']
         tasks: ['coffeelint:server', 'mochacli:server']
 
+      lint:
+        files: [
+          'server/**/*.coffee'
+          'index.coffee'
+          'test/**/*.coffee'
+        ]
+        tasks: ['coffeelint']
+
       grunt:
         files: ['Gruntfile.coffee']
         tasks: ['coffeelint:grunt']
@@ -66,7 +74,7 @@ module.exports = (grunt) ->
 
     coffeelint:
       client: ['app/assets/script/**/*.coffee']
-      server: ['index.coffee', 'server/**/*.coffee', 'test/*.coffee']
+      server: ['index.coffee', 'server/**/*.coffee', 'test/**/*.coffee']
       grunt: ['Gruntfile.coffee']
 
     # Handlebars compiler
@@ -92,7 +100,7 @@ module.exports = (grunt) ->
     mochacli:
       server:
         options:
-          files: 'test/server_spec.coffee'
+          files: ['test/unit/*.coffee', 'test/*.coffee']
           reporter: 'spec'
           compilers: ['coffee:coffee-script']
           env:
@@ -127,6 +135,8 @@ module.exports = (grunt) ->
 
   # Development task. Build everything and then watch for changes
   grunt.registerTask 'development', ['build', 'watch']
+
+  grunt.registerTask 'lint', ['coffeelint', 'watch:lint']
 
   # If no argument is provided, just do the development thing
   grunt.registerTask 'default', ['development']

@@ -1,34 +1,33 @@
-<h1>{{message}}</h1>
+<div class="deployment-detail" data-deploy="{{key}}">
+  
+  <h1>{{push.head_commit.message}}</h1>
 
-<dl>
-  <dt>Author</dt>
-  <dd>{{author}}</dd>
+  <dl>
+    <dt>Author</dt>
+    <dd>{{push.head_commit.author.name}} &lt;{{push.head_commit.author.email}}&gt;</dd>
 
-  <br>
+    <br>
 
-  <dt>SHA</dt>
-  <dd><a href="{{url}}">{{sha}}</a></dd>
+    <dt>SHA</dt>
+    <dd><a href="{{push.head_commit.url}}">{{push.head_commit.id}}</a></dd>
 
-  <br>
+    <br>
 
-  <dt>Time</dt>
-  <dd>{{moment time}}</dd>
+    <dt>Time</dt>
+    <dd>{{moment push.repository.pushed_at}}</dd>
 
-  <br>
+    <br>
 
-  <dt>Status</dt>
-  <dd>{{badge success}}</dd>
-</dl>
+    <dt>Status</dt>
+    <dd>{{badge status}}</dd>
+  </dl>
 
-<h2>Deployment Log</h2>
+  <h2>Deployment Log</h2>
 
-<div class="deployment-log">
-  <p class="line">Deployer running `deploy_v0.1.8.sh`...</p>
-  <p class="line">git fetch origin</p>
-  <p class="line">remote: Counting objects: 8, done.</p>
-  <p class="line">remote: Compressing objects: 100% (8/8), done.</p>
-  <p class="line">remote: Total 8 (delta 0), reused 8 (delta 0)</p>
-  <p class="line">Unpacking objects: 100% (8/8), done.</p>
-  <p class="line">From https://github.com/jwilm/deployer</p>
-  <p class="line">&nbsp;&nbsp;&nbsp;12aae1e..0293a82&nbsp;&nbsp;master&nbsp;&nbsp;&nbsp;&nbsp;-> origin/master</p>
+  <div class="deployment-log">
+    {{#each messages}}
+      <p class="line">{{text}}</p>
+    {{/each}}
+  </div>
+
 </div>
