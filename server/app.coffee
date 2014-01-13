@@ -7,6 +7,8 @@ http = require 'http'
 levelup = require 'levelup'
 Deployment = require './Deployment'
 
+PREFIX = '/deployer'
+
 db = levelup('./deployer.db')
 
 join = path.join
@@ -34,12 +36,12 @@ exports.create = ->
   app.configure ->
     app.use express.json()
     app.use express.urlencoded()
-    app.use '/assets', express.static normalize join(__dirname, '..', 'public/')
+    app.use "#{PREFIX}/assets", express.static normalize join(__dirname, '..', 'public/')
     app.use app.router
     app.use express.errorHandler()
     io.disable 'log'
 
-  app.get '/', (req, res, next) ->
+  app.get "#{PREFIX}", (req, res, next) ->
     if app.env is 'production'
       return res.send cache if cache
 
@@ -49,10 +51,10 @@ exports.create = ->
     .catch (err) ->
       return next(err)
 
-  app.get '/stats', (req, res, next) ->
+  app.get "#{PREFIX}/stats", (req, res, next) ->
     res.send('Stats not implemented')
 
-  app.post '/deploy', (req, res, next) ->
+  app.post "#{PREFIX}/deploy", (req, res, next) ->
     push = JSON.parse(req.body.payload)
     if push
       deploy = new Deployment push, io, db
