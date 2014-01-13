@@ -16,9 +16,13 @@ module.exports = (grunt) ->
         options:
           spawn: false
 
-      coffee:
+      client:
         files: ['app/assets/script/**/*.coffee']
         tasks: ['coffeelint:client', 'coffee', 'concat:js']
+
+      server:
+        files: ['server/**/*.coffee', 'index.coffee', 'test/**/*.coffee']
+        tasks: ['coffeelint:server', 'mochacli:server']
 
       grunt:
         files: ['Gruntfile.coffee']
@@ -59,6 +63,7 @@ module.exports = (grunt) ->
 
     coffeelint:
       client: ['app/assets/script/**/*.coffee']
+      server: ['index.coffee', 'server/**/*.coffee', 'test/*.coffee']
       grunt: ['Gruntfile.coffee']
 
     # Handlebars compiler
@@ -81,6 +86,13 @@ module.exports = (grunt) ->
         command: 'bourbon'
         args: ['install', '--path=vendor/']
 
+    mochacli:
+      server:
+        options:
+          files: 'test/server_spec.coffee'
+          reporter: 'spec'
+          compilers: ['coffee:coffee-script']
+
   }
 
   grunt.loadNpmTasks 'grunt-contrib-watch'
@@ -88,6 +100,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-handlebars'
   grunt.loadNpmTasks 'grunt-contrib-concat'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-mocha-cli'
   grunt.loadNpmTasks 'grunt-coffeelint'
   grunt.loadNpmTasks 'grunt-bower-task'
 

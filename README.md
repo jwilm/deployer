@@ -1,7 +1,8 @@
 deployer
 ========
 
-Automatically deploy your software with real time monitoring of the deploy process
+Automatically deploy your software with real time monitoring of the deploy
+process
 
 ![Deployer](https://f.cloud.github.com/assets/4285147/1895598/e830e4cc-7b43-11e3-9ac5-59df648d8b16.png)
 
@@ -23,9 +24,10 @@ return codes indicate a failure. Node that if there is output captured from
 screen shot).
 
 ## Planned Features
-- Configure single git repository and deploy script
-- Real time display of any output of the deploy script
-- Deploy statistics (frequency, time, duration, etc)
+1. Configure single git repository and deploy script
+2. Real time display of any output of the deploy script
+3. Support multiple projects
+4. Deploy statistics (frequency, time, duration, etc)
 
 ## Getting started
 You must build the project locally for the time being. Once we have some
@@ -46,12 +48,14 @@ npm install
 grunt bootstrap
 ```
 
-The compiled `.js` and `.css` will be placed in `public/`. For now, all you can
-really do is load up index.html in a browser to preview the UI.
+The compiled `.js` and `.css` will be placed in `public/`. Run the server
+`coffee index.coffee` and point your browser to `localhost:3000`. You should
+be able to view the app layout, and that is about it for now.
 
 ## Contributing
-We are using **Sass** for styling, and **CoffeeScript** for scripting. You may
-have noticed that we do not yet have a coffee-script builder in the Gruntfile.
+We are using **Sass** for styling, and **CoffeeScript** for scripting. Please
+add tests for features you are adding, and please make sure everything passes
+before making a PR.
 
 Additional grunt targets that are useful to you:
 - `build`: Build CSS, Compile Templates, Concatenate JS and CSS (normalize.css)

@@ -35,6 +35,8 @@
     "grunt-contrib-coffee": "0.8.x",
     "grunt-coffeelint": "0.0.8",
     "grunt-bower-task": "0.3.x",
-    "mocha": "1.17.x"
+    "grunt-mocha-cli": "1.5.x",
+    "supertest": "0.8.x",
+    "coffee-script": "1.6.x"
   }
 }
