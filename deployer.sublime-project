@@ -8,7 +8,9 @@
         "node_modules",
         ".sass-cache",
         "bower_components",
-        "vendor"
+        "vendor",
+        "temp",
+        "deployer.db"
         ]
 		}
 	]

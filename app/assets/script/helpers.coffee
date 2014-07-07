@@ -1,19 +1,22 @@
-Handlebars.registerHelper "badge", (success) ->
-  message = if success is "false"
-    "Error"
-  else
-    "Deployed"
+Handlebars.registerHelper "badge", (status) ->
 
-  highlight = if success is "true"
+  highlight = if status is "deployed"
     'success'
-  else if success is 'warning'
+  else if status is 'warning' or status is 'running'
     'warning'
   else
     'danger'
 
-  result = "<span class=\"badge badge-#{highlight}\">#{message}</span>"
+  result = "<span class=\"badge badge-#{highlight}\">#{status}</span>"
 
   new Handlebars.SafeString result
 
 Handlebars.registerHelper "moment", (time) ->
   new Handlebars.SafeString moment.unix(time).fromNow()
+
+Handlebars.registerHelper 'each', (context, options) ->
+  ret = ''
+
+  ret += options.fn(c) for c in context
+
+  ret

@@ -24,7 +24,10 @@
   "homepage": "https://github.com/jwilm/deployer",
   "dependencies": {
     "express": "3.4.x",
-    "bluebird": "0.11.x"
+    "bluebird": "0.11.x",
+    "levelup": "0.18.x",
+    "leveldown": "0.10.x",
+    "socket.io": "0.9.x"
   },
   "devDependencies": {
     "grunt": "0.4.x",

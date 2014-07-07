@@ -1,3 +1,3 @@
 app = require('./server/app').create()
 
-app.listen(3000)
+app.server.listen(3000)
